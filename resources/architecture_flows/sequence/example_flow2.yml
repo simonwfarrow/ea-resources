@@ -1,0 +1,43 @@
+id: example_flow_2
+version: 1.0 
+name: Example Flow 2
+description: This is another example flow 
+tags: 
+  - tag3 
+  - tag4 
+links: 
+  - name: Link 1 
+    url: https://google.co.uk 
+    description: Link to google 
+review: 
+  - name: Me 
+    date: 06/10/22 
+steps: 
+  - sequence: 1 
+    description: First Step 
+    note: | 
+      Multiline note 
+      example 
+    producer: 
+      name: Actor1 
+    consumer: 
+      name: Actor2 
+      $ref: 'service_descriptors/actor2.yml' 
+    return: 
+      value: some response 
+      interaction: 
+        $ref: 'service_descriptors/actor2.yml#/interactions/example_response' 
+        endpoint: response_topic 
+    interaction: 
+      $ref: 'service_descriptors/actor2.yml#/interactions/example_request' 
+      endpoint: create_topic 
+    steps: 
+      - sequence: 1 
+        condition: 
+          name: example condition 
+        description: Another request 
+        producer: 
+          name: Actor2 
+          $ref: 'service_descriptors/actor2.yml' 
+        consumer: 
+          name: actor3
