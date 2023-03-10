@@ -19,7 +19,7 @@ steps:
       Multiline note 
       example 
     producer: 
-      name: Actor1 
+      name: Actor4 
     consumer: 
       name: Actor2 
       $ref: 'service_descriptors/actor2.yml' 
